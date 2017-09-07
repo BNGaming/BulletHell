@@ -17,7 +17,9 @@ find_package(SFML 2.4 REQUIRED window system graphics)
 
 include_directories(${SFML_INCLUDE_DIR})
 
-list(APPEND CMAKE_CXX_FLAGS "-std=c++14")
+if(NOT MSVC)
+    list(APPEND CMAKE_CXX_FLAGS "-std=c++14")
+endif()
 
 add_executable(bullet ${SOURCES})
 target_link_libraries(bullet ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
