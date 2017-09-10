@@ -3,10 +3,12 @@
 
 #include <SFML/Window.hpp>
 
-#include "game_time/game_time.h"
+#include "game_time/GameClock.h"
+#include "game_time/GameTime.h"
+//#include "game_time/GameTime.h"
+//#include "game_time/GameTime.h"
 
 int main(int argc, char** argv) {
-    game_time::GameTime myGameTime;
     auto x = std::make_unique<int>(5);
     sf::Window window(sf::VideoMode(1600, 1000), "Test window");
     window.setFramerateLimit(60);

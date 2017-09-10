@@ -1,22 +1,20 @@
 #pragma once
 
-#include <FrameCount.h>
+#include "FrameCount.h"
 
 namespace game_time {
 namespace framerate {
 class FrameCounter : public FrameCount {
-    double target_frame_rate;
-    double slow_threshold;
+    double m_target_frame_rate;
+    double m_slow_threshold;
 
 
 public:
     virtual double const target_frame_rate() = 0;
 
-    template <class T>
-    virtual std::chrono::duration<T> const target_time_per_frame() = 0;
+    virtual std::chrono::duration<double> const target_time_per_frame() = 0;
 
-    template <class T>
-    virtual std::chrono::duration<T> const remaining_frame_time() = 0;
+    virtual std::chrono::duration<double> const remaining_frame_time() = 0;
 
     virtual void tick(const GameTime& time) = 0;
 

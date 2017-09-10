@@ -7,11 +7,11 @@
 namespace game_time {
 namespace time_step {
 class ConstantStep : public TimeStep {
-    std::chrono::duration<double> step;
+    std::chrono::duration<double> m_step;
 
 public:
-    ConstantStep(std::chrono::duration<double> step) { this->step = step; }
-    // ConstantStep(double step) { this->step = std::chrono::duration<double>
+    ConstantStep(std::chrono::duration<double> step) { this->m_step = step; }
+    // ConstantStep(double step) { this->m_step = std::chrono::duration<double>
     // {step}; }
 
     ConstantStep null_step() {
@@ -20,7 +20,7 @@ public:
 
     std::chrono::duration<double> const time_step(
             const std::chrono::duration<double>& wall_time) {
-        return this->step;
+        return this->m_step;
     }
 };
 

@@ -10,11 +10,9 @@ class FrameCount {
 public:
     virtual double const target_frame_rate() = 0;
 
-    template <class T>
-    virtual std::chrono::duration<T> const target_time_per_frame() = 0;
+    virtual std::chrono::duration<double> const target_time_per_frame() = 0;
 
-    template <class T>
-    virtual std::chrono::duration<T> const remaining_frame_time() = 0;
+    virtual std::chrono::duration<double> const remaining_frame_time() = 0;
 
     virtual void tick(const GameTime& time) = 0;
 

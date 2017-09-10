@@ -13,7 +13,7 @@ public:
 
     std::chrono::duration<double> const time_step(
             const std::chrono::duration<double>& wall_time) {
-        return this->step;
+        return this->m_step;
     }
 };
 

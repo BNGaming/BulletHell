@@ -9,7 +9,7 @@ namespace game_time {
 namespace framerate {
 namespace sampler {
 class RunningAverageSampler : public FrameRateSampler {
-    uint32_t max_samples;
+    uint32_t m_max_samples;
     uint32_t current_samples;
     double current_average;
 
@@ -17,7 +17,7 @@ public:
     RunningAverageSampler(uint32_t max_samples,
             uint32_t current_samples,
             double current_average) {
-        this->max_samples = max_samples;
+        this->m_max_samples = max_samples;
         this->current_samples = current_samples;
         this->current_average = current_average;
     }
