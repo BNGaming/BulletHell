@@ -1,12 +1,14 @@
 #pragma once
 
-#include <chrono>
-
-#include "GameTime.h"
+#include <FrameCount.h>
 
 namespace game_time {
 namespace framerate {
-class FrameCount {
+class FrameCounter : public FrameCount {
+    double target_frame_rate;
+    double slow_threshold;
+
+
 public:
     virtual double const target_frame_rate() = 0;
 
@@ -22,5 +24,6 @@ public:
 
     virtual bool const is_running_slow(const GameTime& time) = 0;
 };
+
 } // namespace framerate
 } // namespace game_time

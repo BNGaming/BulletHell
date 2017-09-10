@@ -109,7 +109,7 @@ public:
     }
 
     template <class T>
-    void sleep_remaining_via(const FrameCount& counter,
+    void sleep_remaining_via(const framerate::FrameCount& counter,
             std::function<void(const std::chrono::duration<T>&)> f) {
         std::chrono::duration<double> remaining_time =
                 counter.target_time_per_frame() -
@@ -119,7 +119,7 @@ public:
         }
     }
 
-    void sleep_remaining(const FrameCount& counter) {
+    void sleep_remaining(const framerate::FrameCount& counter) {
         this->sleep_remaining_via(counter, std::this_thread::sleep_for);
     }
 };
