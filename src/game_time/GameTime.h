@@ -20,13 +20,12 @@ public:
             std::chrono::duration<double> total_game_time,
             std::chrono::duration<double> elapsed_wall_time,
             std::chrono::duration<double> elapsed_game_time,
-            uint64_t frame_number) {
-        this->m_frame_start_time = frame_start_time;
-        this->m_total_wall_time = total_wall_time;
-        this->m_total_game_time = total_game_time;
-        this->m_elapsed_wall_time = elapsed_game_time;
-        this->m_elapsed_game_time = elapsed_game_time;
-        this->m_frame_number = frame_number;
+            uint64_t frame_number)
+        : m_frame_start_time(frame_start_time),
+          m_total_wall_time(total_wall_time),
+          m_total_game_time(total_game_time),
+          m_elapsed_wall_time(elapsed_wall_time),
+          m_elapsed_game_time(elapsed_game_time), m_frame_number(frame_number) {
     }
 
     std::chrono::time_point<std::chrono::high_resolution_clock>
@@ -56,7 +55,8 @@ public:
     double instantaneous_frame_rate() const {
         return 1.0 /
                 std::chrono::duration_cast<std::chrono::seconds>(
-                        this->m_elapsed_game_time).count();
+                        this->m_elapsed_game_time)
+                        .count();
     }
 };
 

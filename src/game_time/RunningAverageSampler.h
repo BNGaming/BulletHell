@@ -10,17 +10,15 @@ namespace framerate {
 namespace sampler {
 class RunningAverageSampler : public FrameRateSampler {
     uint32_t m_max_samples;
-    uint32_t current_samples;
-    double current_average;
+    uint32_t m_current_samples;
+    double m_current_average;
 
 public:
     RunningAverageSampler(uint32_t max_samples,
             uint32_t current_samples,
-            double current_average) {
-        this->m_max_samples = max_samples;
-        this->current_samples = current_samples;
-        this->current_average = current_average;
-    }
+            double current_average)
+        : m_max_samples(max_samples), m_current_samples(current_samples),
+          m_current_average(current_average) {}
 
     RunningAverageSampler(uint32_t max_samples)
         : RunningAverageSampler(max_samples, 0, 0.0){};

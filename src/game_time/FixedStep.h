@@ -6,10 +6,10 @@
 namespace game_time {
 namespace time_step {
 class FixedStep : public TimeStep {
-    framerate::FrameCount count;
+    framerate::FrameCount m_count;
 
 public:
-    FixedStep(framerate::FrameCount count) { this->count = count; }
+    FixedStep(framerate::FrameCount count) : m_count(count) {}
 
     std::chrono::duration<double> const time_step(
             const std::chrono::duration<double>& wall_time) {

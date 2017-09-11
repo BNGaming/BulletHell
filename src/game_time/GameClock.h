@@ -19,32 +19,27 @@ class GameClock {
     double m_clock_multiplier;
 
 public:
-    GameClock() {
-        auto now = std::chrono::high_resolution_clock::now();
-        this->m_last_frame_time = GameTime(now,
-                std::chrono::duration<double>::zero(),
-                std::chrono::duration<double>::zero(),
-                std::chrono::duration<double>::zero(),
-                std::chrono::duration<double>::zero(),
-                0);
-        this->m_start_wall_time = now;
-        this->m_total_game_time = std::chrono::duration<double>::zero();
-        this->m_current_frame = 0;
-        this->m_clock_multiplier = 1.0;
-    }
+    GameClock()
+        : m_last_frame_time(std::chrono::high_resolution_clock::now(),
+                  std::chrono::duration<double>::zero(),
+                  std::chrono::duration<double>::zero(),
+                  std::chrono::duration<double>::zero(),
+                  std::chrono::duration<double>::zero(),
+                  0),
+          m_start_wall_time(std::chrono::high_resolution_clock::now()),
+          m_total_game_time(std::chrono::duration<double>::zero()),
+          m_current_frame(0), m_clock_multiplier(1.0) {}
 
     GameClock(GameTime last_frame_time,
             std::chrono::time_point<std::chrono::high_resolution_clock>
                     start_wall_time,
             std::chrono::duration<double> total_game_time,
             uint64_t current_frame,
-            double clock_multiplier) {
-        this->m_last_frame_time = last_frame_time;
-        this->m_start_wall_time = start_wall_time;
-        this->m_total_game_time = total_game_time;
-        this->m_current_frame = current_frame;
-        this->m_clock_multiplier = clock_multiplier;
-    }
+            double clock_multiplier)
+        : m_last_frame_time(last_frame_time),
+          m_start_wall_time(start_wall_time),
+          m_total_game_time(total_game_time), m_current_frame(current_frame),
+          m_clock_multiplier(clock_multiplier) {}
 
     const GameTime& last_frame_time() const { return this->m_last_frame_time; }
 

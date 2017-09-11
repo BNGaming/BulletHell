@@ -10,7 +10,7 @@ class ConstantStep : public TimeStep {
     std::chrono::duration<double> m_step;
 
 public:
-    ConstantStep(std::chrono::duration<double> step) { this->m_step = step; }
+    ConstantStep(std::chrono::duration<double> step) : m_step(step) {}
     // ConstantStep(double step) { this->m_step = std::chrono::duration<double>
     // {step}; }
 

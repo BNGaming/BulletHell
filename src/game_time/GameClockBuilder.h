@@ -9,17 +9,15 @@ namespace game_time {
 
 class GameClockBuilder {
     std::chrono::duration<double> m_start_game_time;
-    std::chrono::time_point<std::chrono::high_resolution_clock> m_start_wall_time;
+    std::chrono::time_point<std::chrono::high_resolution_clock>
+            m_start_wall_time;
     uint64_t m_start_frame;
     double m_clock_multiplier;
 
 public:
-    GameClockBuilder() {
-        this->m_start_game_time = std::chrono::duration<double>{0.0};
-        this->m_start_wall_time = std::chrono::high_resolution_clock::now();
-        this->m_start_frame = 0;
-        this->m_clock_multiplier = 1.0;
-    }
+    GameClockBuilder() m_start_game_time(std::chrono::duration<double>{0.0}),
+            m_start_wall_time(std::chrono::high_resolution_clock::now()),
+            m_start_frame(0), m_clock_multiplier(1.0) {}
 
     GameClockBuilder start_game_time(
             std::chrono::duration<double> start_game_time) {
