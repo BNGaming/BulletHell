@@ -10,17 +10,17 @@ class FrameCounter : public FrameCount {
 
 
 public:
-    virtual double const target_frame_rate() = 0;
+    virtual double target_frame_rate() const = 0;
 
-    virtual std::chrono::duration<double> const target_time_per_frame() = 0;
+    virtual std::chrono::duration<double> target_time_per_frame() const = 0;
 
-    virtual std::chrono::duration<double> const remaining_frame_time() = 0;
+    virtual std::chrono::duration<double> remaining_frame_time() const = 0;
 
     virtual void tick(const GameTime& time) = 0;
 
-    virtual double const average_frame_rate() = 0;
+    virtual double average_frame_rate() const = 0;
 
-    virtual bool const is_running_slow(const GameTime& time) = 0;
+    virtual bool is_running_slow(const GameTime& time) const = 0;
 };
 
 } // namespace framerate

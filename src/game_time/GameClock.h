@@ -113,7 +113,11 @@ public:
     }
 
     void sleep_remaining(const framerate::FrameCount& counter) {
-        this->sleep_remaining_via(counter, std::this_thread::sleep_for);
+        this->sleep_remaining_via(
+                counter, [](auto& c) { std::this_thread::sleep_for(c); });
+        // this->sleep_remaining_via(
+        //        counter, std::this_thread::sleep_for<double, std::ratio<1,
+        //        1>>);
     }
 };
 } // namespace game_time
