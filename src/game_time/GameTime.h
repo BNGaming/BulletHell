@@ -53,10 +53,7 @@ public:
     uint64_t frame_number() const { return this->m_frame_number; }
 
     double instantaneous_frame_rate() const {
-        return 1.0 /
-                std::chrono::duration_cast<std::chrono::seconds>(
-                        this->m_elapsed_game_time)
-                        .count();
+        return 1.0 / this->m_elapsed_game_time.count();
     }
 };
 

@@ -42,21 +42,7 @@ public:
         return *this;
     }
 
-    GameClock build() const {
-        auto now = std::chrono::high_resolution_clock::now();
-        GameTime game_time = GameTime(this->m_start_wall_time,
-                std::chrono::duration<double>{0.0},
-                this->m_start_game_time,
-                std::chrono::duration<double>{0.0},
-                std::chrono::duration<double>{0.0},
-                this->m_start_frame);
-
-        return GameClock(game_time,
-                this->m_start_wall_time,
-                this->m_start_game_time,
-                this->m_start_frame,
-                this->m_clock_multiplier);
-    }
+	GameClock build() const;
 };
 
 } // namespace game_time

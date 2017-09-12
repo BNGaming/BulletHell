@@ -16,22 +16,13 @@ class LinearAverageSampler : public FrameRateSampler {
 
 public:
     LinearAverageSampler(uint32_t max_samples, std::deque<double> past_data)
-        : m_max_samples(max_samples), m_past_data(past_data) {}
+        : m_max_samples(max_samples), m_past_data(std::move(past_data)) {}
 
     LinearAverageSampler(uint32_t max_samples)
         : LinearAverageSampler(max_samples, std::deque<double>(max_samples)){};
     LinearAverageSampler() : LinearAverageSampler(DEFAULT_NUM_SAMPLES){};
 
-    void tick(const GameTime& time) {
-        auto effective_fps = 1.0 /
-                std::chrono::duration_cast<std::chrono::seconds>(
-                        time.elapsed_wall_time())
-                        .count();
-        if(this->is_saturated()) {
-            this->m_past_data.pop_front();
-        }
-        this->m_past_data.push_back(effective_fps);
-    }
+	void tick(const GameTime& time);
 
     double const average_frame_rate() {
         double sum = std::accumulate(
