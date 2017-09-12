@@ -4,16 +4,17 @@
 
 namespace game_time {
 namespace framerate {
-namespace sampler {
+namespace samplers {
 
 uint32_t DEFAULT_NUM_SAMPLES = 64;
 
 class FrameRateSampler {
+public:
     virtual void tick(const GameTime& time) = 0;
-    virtual double const average_frame_rate() = 0;
-    virtual bool const is_saturated() = 0;
-    virtual uint32_t const max_samples() = 0;
+    virtual double average_frame_rate() const = 0;
+    virtual bool is_saturated() const = 0;
+    virtual uint32_t max_samples() const = 0;
 };
-} // namespace sampler
+} // namespace samplers
 } // namespace framerate
 } // namespace game_time

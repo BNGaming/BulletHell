@@ -7,7 +7,7 @@
 
 namespace game_time {
 namespace framerate {
-namespace sampler {
+namespace samplers {
 class RunningAverageSampler : public FrameRateSampler {
     uint32_t m_max_samples;
     uint32_t m_current_samples;
@@ -24,21 +24,21 @@ public:
         : RunningAverageSampler(max_samples, 0, 0.0){};
     RunningAverageSampler()
         : RunningAverageSampler(DEFAULT_NUM_SAMPLES, 0, 0.0){};
-
-    void tick(const GameTime& time) {
+	
+	void tick(const GameTime& time) {
         if(!this->is_saturated()) {
-            this->current_samples += 1;
+            this->m_current_samples += 1;
         }
-        auto num_sampled = this->current_samples;
+        auto num_sampled = this->m_current_samples;
         auto effective_fps = 1.0 /
                 std::chrono::duration_cast<std::chrono::seconds>(
                         time.elapsed_wall_time())
                         .count();
     }
-    double const average_frame_rate() { return 1; }
-    bool const is_saturated() { return false; }
-    uint32_t const max_samples() { return 1; }
+	double const average_frame_rate() { return this->m_current_average; }
+	bool const is_saturated() { return this->m_current_samples == this->max_samples(); }
+	uint32_t const max_samples() { return this->m_max_samples; }
 };
-} // namespace sampler
+} // namespace samplers
 } // namespace framerate
 } // namespace game_time

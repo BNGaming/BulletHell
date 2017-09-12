@@ -18,8 +18,8 @@ public:
         return ConstantStep(std::chrono::duration<double>{0.0});
     }
 
-    std::chrono::duration<double> const time_step(
-            const std::chrono::duration<double>& wall_time) {
+    std::chrono::duration<double> time_step(
+            const std::chrono::duration<double>& wall_time) const {
         return this->m_step;
     }
 };

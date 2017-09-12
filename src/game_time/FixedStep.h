@@ -1,19 +1,21 @@
 #pragma once
 
+#include <memory>
+
 #include "FrameCount.h"
 #include "TimeStep.h"
 
 namespace game_time {
 namespace time_step {
 class FixedStep : public TimeStep {
-    framerate::FrameCount m_count;
+    std::unique_ptr<framerate::FrameCount> m_count;
 
 public:
-    FixedStep(framerate::FrameCount count) : m_count(count) {}
+    FixedStep(std::unique_ptr<framerate::FrameCount> count) : m_count(std::move(count)) {}
 
-    std::chrono::duration<double> const time_step(
-            const std::chrono::duration<double>& wall_time) {
-        return this->m_step;
+    std::chrono::duration<double> time_step(
+            const std::chrono::duration<double>& wall_time) const {
+        return this->m_count->target_time_per_frame();
     }
 };
 
