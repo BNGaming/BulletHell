@@ -6,3 +6,4 @@ Debug/
 .git/
 #*.vcxproj*
 Builds/
+.ycm_extra_conf.py
