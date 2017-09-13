@@ -6,7 +6,7 @@
 #include "TimeStep.h"
 
 namespace game_time {
-namespace time_step {
+namespace time_steps {
 class FixedStep : public TimeStep {
     std::unique_ptr<framerate::FrameCount> m_count;
 

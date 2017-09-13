@@ -14,10 +14,7 @@ namespace framerate {
 namespace samplers {
 
 void LinearAverageSampler::tick(const GameTime& time) {
-    auto effective_fps = 1.0 /
-            std::chrono::duration_cast<std::chrono::seconds>(
-                    time.elapsed_wall_time())
-                    .count();
+	auto effective_fps = std::chrono::duration<double>{ 1.0 } / time.elapsed_wall_time();
     if(this->is_saturated()) {
         this->m_past_data.pop_front();
     }

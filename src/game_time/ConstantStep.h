@@ -5,7 +5,7 @@
 #include "TimeStep.h"
 
 namespace game_time {
-namespace time_step {
+namespace time_steps {
 class ConstantStep : public TimeStep {
     std::chrono::duration<double> m_step;
 

@@ -11,7 +11,7 @@
 
 namespace game_time {
 
-GameTime GameClock::tick_with_wall_time(const TimeStep& time_step,
+GameTime GameClock::tick_with_wall_time(const time_steps::TimeStep& time_step,
         std::chrono::time_point<std::chrono::high_resolution_clock>
                 frame_start) {
     this->m_current_frame += 1;

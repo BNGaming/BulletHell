@@ -25,21 +25,13 @@ public:
     RunningAverageSampler()
         : RunningAverageSampler(DEFAULT_NUM_SAMPLES, 0, 0.0){};
 
-    void tick(const GameTime& time) {
-        if(!this->is_saturated()) {
-            this->m_current_samples += 1;
-        }
-        auto num_sampled = this->m_current_samples;
-        auto effective_fps = 1.0 /
-                std::chrono::duration_cast<std::chrono::seconds>(
-                        time.elapsed_wall_time())
-                        .count();
-    }
-    double const average_frame_rate() { return this->m_current_average; }
-    bool const is_saturated() {
+	void tick(const GameTime& time);
+
+    double average_frame_rate() const { return this->m_current_average; }
+    bool is_saturated() const {
         return this->m_current_samples == this->max_samples();
     }
-    uint32_t const max_samples() { return this->m_max_samples; }
+    uint32_t max_samples() const { return this->m_max_samples; }
 };
 } // namespace samplers
 } // namespace framerate

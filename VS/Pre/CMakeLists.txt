@@ -1,5 +1,5 @@
 #Root directory for any external libraries
-set(EXTERNAL_LIBS_DIR "D:/Libraries")
+set(EXTERNAL_LIBS_DIR $ENV{EXT_LIBS_DIR})
 	
 #SFML
 set(SFML_VERSION_NUMBER "2.4.2")

@@ -24,16 +24,16 @@ public:
 
     void tick(const GameTime& time);
 
-    double const average_frame_rate() {
+    double average_frame_rate() const {
         double sum = std::accumulate(
                 this->m_past_data.begin(), this->m_past_data.end(), 0.0);
         return sum / this->m_past_data.size();
     }
 
-    bool const is_saturated() {
+    bool is_saturated() const {
         return this->m_past_data.size() == this->max_samples();
     }
-    uint32_t const max_samples() { return this->m_max_samples; }
+    uint32_t max_samples() const { return this->m_max_samples; }
 };
 } // namespace samplers
 } // namespace framerate

@@ -6,7 +6,7 @@ namespace game_time {
 namespace framerate {
 namespace samplers {
 
-uint32_t DEFAULT_NUM_SAMPLES = 64;
+const uint32_t DEFAULT_NUM_SAMPLES = 64;
 
 class FrameRateSampler {
 public:

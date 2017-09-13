@@ -71,12 +71,12 @@ public:
         return *this;
     }
 
-    GameTime tick_with_wall_time(const TimeStep& time_step,
+    GameTime tick_with_wall_time(const time_steps::TimeStep& time_step,
             std::chrono::time_point<std::chrono::high_resolution_clock>
                     frame_start);
 
-    GameTime tick(const TimeStep& time_step) {
-        auto frame_start = std::chrono::high_resolution_clock::now();
+    GameTime tick(const time_steps::TimeStep& time_step) {
+        std::chrono::time_point<std::chrono::high_resolution_clock> frame_start = std::chrono::high_resolution_clock::now();
         return this->tick_with_wall_time(time_step, frame_start);
     }
 

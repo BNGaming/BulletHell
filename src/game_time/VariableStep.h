@@ -3,7 +3,7 @@
 #include "TimeStep.h"
 
 namespace game_time {
-namespace time_step {
+namespace time_steps {
 class VariableStep : public TimeStep {
 public:
     VariableStep() {}
