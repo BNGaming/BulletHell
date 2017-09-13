@@ -24,8 +24,8 @@ public:
         : RunningAverageSampler(max_samples, 0, 0.0){};
     RunningAverageSampler()
         : RunningAverageSampler(DEFAULT_NUM_SAMPLES, 0, 0.0){};
-	
-	void tick(const GameTime& time) {
+
+    void tick(const GameTime& time) {
         if(!this->is_saturated()) {
             this->m_current_samples += 1;
         }
@@ -35,9 +35,11 @@ public:
                         time.elapsed_wall_time())
                         .count();
     }
-	double const average_frame_rate() { return this->m_current_average; }
-	bool const is_saturated() { return this->m_current_samples == this->max_samples(); }
-	uint32_t const max_samples() { return this->m_max_samples; }
+    double const average_frame_rate() { return this->m_current_average; }
+    bool const is_saturated() {
+        return this->m_current_samples == this->max_samples();
+    }
+    uint32_t const max_samples() { return this->m_max_samples; }
 };
 } // namespace samplers
 } // namespace framerate

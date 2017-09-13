@@ -22,7 +22,7 @@ public:
         : LinearAverageSampler(max_samples, std::deque<double>(max_samples)){};
     LinearAverageSampler() : LinearAverageSampler(DEFAULT_NUM_SAMPLES){};
 
-	void tick(const GameTime& time);
+    void tick(const GameTime& time);
 
     double const average_frame_rate() {
         double sum = std::accumulate(

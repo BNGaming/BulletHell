@@ -15,9 +15,10 @@ class GameClockBuilder {
     double m_clock_multiplier;
 
 public:
-    GameClockBuilder() : m_start_game_time(std::chrono::duration<double>{0.0}),
-            m_start_wall_time(std::chrono::high_resolution_clock::now()),
-            m_start_frame(0), m_clock_multiplier(1.0) {}
+    GameClockBuilder()
+        : m_start_game_time(std::chrono::duration<double>{0.0}),
+          m_start_wall_time(std::chrono::high_resolution_clock::now()),
+          m_start_frame(0), m_clock_multiplier(1.0) {}
 
     GameClockBuilder start_game_time(
             std::chrono::duration<double> start_game_time) {
@@ -42,7 +43,7 @@ public:
         return *this;
     }
 
-	GameClock build() const;
+    GameClock build() const;
 };
 
 } // namespace game_time

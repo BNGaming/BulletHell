@@ -11,7 +11,8 @@ class FixedStep : public TimeStep {
     std::unique_ptr<framerate::FrameCount> m_count;
 
 public:
-    FixedStep(std::unique_ptr<framerate::FrameCount> count) : m_count(std::move(count)) {}
+    FixedStep(std::unique_ptr<framerate::FrameCount> count)
+        : m_count(std::move(count)) {}
 
     std::chrono::duration<double> time_step(
             const std::chrono::duration<double>& wall_time) const {

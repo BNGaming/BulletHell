@@ -5,7 +5,6 @@
 namespace game_time {
 namespace time_step {
 class VariableStep : public TimeStep {
-
 public:
     VariableStep() {}
 
