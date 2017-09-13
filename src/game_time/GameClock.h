@@ -81,7 +81,7 @@ public:
     }
 
     void sleep_remaining_via(const framerate::FrameCount& counter,
-            std::function<void(const std::chrono::duration<double>&)> f);
+            const std::function<void(const std::chrono::duration<double>&)>& f);
 
     void sleep_remaining(const framerate::FrameCount& counter) {
         this->sleep_remaining_via(

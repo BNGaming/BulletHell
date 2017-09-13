@@ -37,10 +37,11 @@ GameTime GameClock::tick_with_wall_time(const TimeStep& time_step,
 
 
 void GameClock::sleep_remaining_via(const framerate::FrameCount& counter,
-        std::function<void(const std::chrono::duration<double>&)> f) {
+        const std::function<void(const std::chrono::duration<double>&)>& f) {
     std::chrono::duration<double> remaining_time =
             counter.target_time_per_frame() -
             this->last_frame_time().elapsed_time_since_start_of_frame();
+
     if(remaining_time > std::chrono::duration<double>{0.0}) {
         f(remaining_time);
     }
