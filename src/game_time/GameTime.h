@@ -18,8 +18,8 @@ public:
                      frame_start_time,
             std::chrono::duration<double> total_wall_time,
             std::chrono::duration<double> total_game_time,
-            std::chrono::duration<double> elapsed_wall_time,
             std::chrono::duration<double> elapsed_game_time,
+            std::chrono::duration<double> elapsed_wall_time,
             uint64_t frame_number)
         : m_frame_start_time(frame_start_time),
           m_total_wall_time(total_wall_time),
@@ -53,7 +53,7 @@ public:
     uint64_t frame_number() const { return this->m_frame_number; }
 
     double instantaneous_frame_rate() const {
-        return 1.0 / this->m_elapsed_game_time.count();
+        return 1.0 / this->m_elapsed_wall_time.count();
     }
 };
 

@@ -27,7 +27,9 @@ int main(int argc, char** argv) {
     game_time::framerate::FrameCounter frame_counter{60,
             std::unique_ptr<game_time::framerate::samplers::FrameRateSampler>(
                     std::move(&frame_rate_sampler))};
-    game_time::time_steps::FixedStep time_step{
+	//game_time::time_steps::ConstantStep time_step{ std::chrono::duration<double>{ 1.0 / 60.0 } };
+	
+	game_time::time_steps::FixedStep time_step{
             std::unique_ptr<game_time::framerate::FrameCount>(&frame_counter)};
 
     sf::RenderWindow window(sf::VideoMode(1600, 1000), "Test window");
@@ -70,7 +72,9 @@ int main(int argc, char** argv) {
         }
 
         window.display();
-        //game_clock.sleep_remaining(frame_counter);
+		//game_clock.sleep_remaining(frame_counter);
+		//game_clock.sleep_remaining(frame_counter);
+		//game_clock.sleep_remaining(frame_counter);
     }
 
     return 0;
