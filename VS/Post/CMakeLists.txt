@@ -15,11 +15,11 @@ message(STATUS "Set Build directory to be ${BULLET_RUNTIME_OUTPUT_DIR}")
 #		"${BULLET_RUNTIME_OUTPUT_DIR}")
 
 #Put Resources with the executable after build
-message(STATUS "Adding post-Build command to copy Resources from ${PROJECT_SOURCE_DIR}/resources to ${BULLET_RUNTIME_OUTPUT_DIR}")
+message(STATUS "Adding post-Build command to copy Resources from ${PROJECT_SOURCE_DIR}/resources to ${BULLET_RUNTIME_OUTPUT_DIR}/resources")
 add_custom_command(TARGET bullet POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
 		"${PROJECT_SOURCE_DIR}/resources"
-		"${BULLET_RUNTIME_OUTPUT_DIR}")
+		"${BULLET_RUNTIME_OUTPUT_DIR}/resources")
 
 #End file
 message(STATUS "End of Post/CMakeLists.txt file")

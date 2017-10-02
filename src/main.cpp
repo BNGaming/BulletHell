@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     window.setFramerateLimit(FPS_LIMIT);
 
     sf::Font font;
-    if(!font.loadFromFile("fonts/OpenSans/OpenSans-Regular.ttf")) {
+    if(!font.loadFromFile("resources/fonts/OpenSans/OpenSans-Regular.ttf")) {
         return 1;
     }
     sf::Text text;
