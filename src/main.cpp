@@ -35,13 +35,11 @@ int main(int argc, char** argv)
 	game_time::framerate::FrameCounter frame_counter{ FPS_LIMIT,
 			std::unique_ptr<game_time::framerate::samplers::FrameRateSampler>(
 					std::move(&frame_rate_sampler)) };
-
 	game_time::time_steps::VariableStep time_step{};
-	//        std::unique_ptr<game_time::framerate::FrameCount>(&frame_counter)};
 
 
     sf::RenderWindow window(sf::VideoMode(1600, 1000), "Test window");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(FPS_LIMIT);
 
     sf::Font font;
     if(!font.loadFromFile("fonts/OpenSans/OpenSans-Regular.ttf")) {
@@ -80,9 +78,6 @@ int main(int argc, char** argv)
         }
 
         window.display();
-		//game_clock.sleep_remaining(frame_counter);
-		//game_clock.sleep_remaining(frame_counter);
-		//game_clock.sleep_remaining(frame_counter);
     }
 
     return 0;
