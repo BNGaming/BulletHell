@@ -10,5 +10,5 @@ addons:
 script:
   - export CC=gcc-7
   - export CXX=g++-7
-  - cmake -G "bullet" -DCMAKE_BUILD_TYPE=Debug
+  - cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug
   - make
