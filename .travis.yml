@@ -7,8 +7,8 @@ addons:
     packages:
       - gcc-7
       - g++-7
-	  - sfml
-	  - boost
+	  - libsfml-dev
+	  - libboost-all-dev
 script:
   - export CC=gcc-7
   - export CXX=g++-7
