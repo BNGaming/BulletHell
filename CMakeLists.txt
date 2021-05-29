@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 project(BulletHell)
 
 MESSAGE( STATUS "CMAKE_VERSION: " ${CMAKE_VERSION} )
+set(CMAKE_CXX_STANDARD 20)
 
 #Windows-specific setup before finding packages
 if(WIN32)
@@ -67,6 +68,12 @@ target_link_libraries(bullet ${SFML_LIBRARIES} ${Boost_LIBRARIES})
 if(WIN32)
 	message(STATUS "Including: \"${PROJECT_SOURCE_DIR}/VS/Post/CMakeLists.txt\"")
 	include("${PROJECT_SOURCE_DIR}/VS/Post/CMakeLists.txt")
+endif()
+
+set(BUILD_TEST_PROGRAMS 1)
+if(DEFINED BUILD_TEST_PROGRAMS)
+	message("Building test binaries...")
+	add_subdirectory(${PROJECT_SOURCE_DIR}/test)
 endif()
 
 message(STATUS "End of primary CMakeLists.txt file")
